@@ -6,10 +6,15 @@
               android:layout_height="match_parent"
               xmlns:card_view="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
-              tools:context="com.example.primepay.ui.Purchase">
+              tools:context=".MobileTopup">
 
-    <include layout="@layout/toolbar" />
-
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize" android:id="@+id/toolbar4" app:title="@string/top_up"
+            app:titleTextColor="#F9F9F9"/>
     <androidx.core.widget.NestedScrollView
             android:id="@+id/nested_scroll_view"
             android:layout_width="match_parent"
@@ -24,14 +29,6 @@
             android:orientation="vertical">
 
 
-        <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                card_view:cardElevation="8dp"
-                app:cardCornerRadius="5dp"
-                android:background="#ffffff">
-
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -41,12 +38,12 @@
                 <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="81dp"
-                        android:src="@drawable/ic_cash"
-                        tools:srcCompat="@drawable/mobile" android:contentDescription="@string/page_logo"/>
+                        android:src="@drawable/mobile"
+                        tools:srcCompat="@drawable/mobile" android:contentDescription="@string/page_logo"
+                        android:padding="15dp"/>
 
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -61,14 +58,14 @@
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
+                    android:orientation="vertical" android:padding="15dp">
 
                 <TextView
                         android:text="@string/telecom_company"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:textAppearance="@style/TextAppearance.Medium.Bold"/>
+                        android:textAppearance="@style/TextAppearance.Medium.Bold" android:textAlignment="center"
+                        android:textColor="@android:color/black"/>
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -81,7 +78,7 @@
                     <Spinner
                             android:id="@+id/telecomMethodSpinner"
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="42dp"
                             android:layout_gravity="center"
                             android:entries="@array/mobile_providers"
                             android:prompt="@string/moblie_providers_prompt"/>
@@ -90,87 +87,35 @@
                 <TextView
                         android:text="@string/phone_number"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textAppearance="@style/TextAppearance.Medium.Bold"/>
-                <LinearLayout
+                        android:layout_height="wrap_content" android:id="@+id/textView9"
+                        android:textColor="@android:color/black" android:textSize="18sp" android:textStyle="bold"
+                        android:textAlignment="center"/>
+                <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="18dp"
-                        android:layout_marginRight="18dp"
-                        android:layout_marginTop="18dp"
-                        android:background="@drawable/round_border">
+                        android:layout_height="match_parent" app:hintAnimationEnabled="false" app:hintEnabled="false"
+                        android:id="@+id/phoneNumberTU">
 
                     <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="#00000000"
-                            android:hint="@string/electric"
-                            android:padding="15dp"
-                            android:textSize="14sp"/>
-
-                </LinearLayout>
-
+                            android:hint=" 9XXXXXXXXX" android:inputType="number"/>
+                </com.google.android.material.textfield.TextInputLayout>
                 <TextView
                         android:text="@string/amount"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" android:id="@+id/textView"
-                        android:textAppearance="@style/TextAppearance.Medium.Bold"/>
-                <LinearLayout
+                        android:layout_height="wrap_content" android:id="@+id/textView8"
+                        android:textAlignment="center" android:textColor="@android:color/black"
+                        android:textSize="18sp" android:textStyle="bold"/>
+                <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="18dp"
-                        android:layout_marginRight="18dp"
-                        android:layout_marginTop="18dp"
-                        android:background="@drawable/round_border">
+                        android:layout_height="match_parent" app:hintAnimationEnabled="false" app:hintEnabled="false"
+                        android:id="@+id/amountLayoutTU">
 
                     <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="#00000000"
-                            android:hint="@string/amount"
-                            android:padding="15dp"
-                            android:textSize="14sp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="18dp"
-                        android:background="@drawable/round_border"/>
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal" android:baselineAligned="false">
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="3"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="18dp"
-                            android:background="@drawable/round_border"/>
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="3"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="10dp"
-                            android:background="@drawable/round_border"/>
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="18dp"
-                            android:layout_marginStart="10dp"
-                            android:layout_weight="3"
-                            android:background="@drawable/round_border"/>
-
-                </LinearLayout>
-
-                <View
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/spacing_smlarge"/>
+                            android:hint="@string/amount" android:inputType="number|numberDecimal"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
                         android:layout_width="match_parent"
@@ -182,13 +127,24 @@
                         android:textColor="@color/grey_90"
                         android:textStyle="bold"/>
 
-                <Spinner
-                        android:id="@+id/paymentMethodSpinner"
+                <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:layout_gravity="center"
-                        android:entries="@array/payment_method"
-                        android:prompt="@string/payment_method_prompt"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginRight="18dp"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/round_border">
+
+                    <Spinner
+                            android:id="@+id/paymentMethodSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="42dp"
+                            android:layout_gravity="center"
+                            android:entries="@array/payment_method"
+                            android:prompt="@string/payment_method_prompt"/>
+
+
+                </LinearLayout>
 
                 <Button
                         android:layout_width="match_parent"
@@ -202,7 +158,7 @@
                         android:layout_gravity="center"
                         android:background="@drawable/rounded_button"
                         android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"/>
+                        android:layout_marginRight="20dp" android:id="@+id/proceedTU"/>
 
                 <Button
                         android:id="@+id/button"
@@ -221,8 +177,8 @@
                 />
 
 
-
             </LinearLayout>
+
         </androidx.cardview.widget.CardView>
 
 

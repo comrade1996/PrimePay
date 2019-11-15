@@ -12,8 +12,8 @@
     <!-- Strings Related To Trnsactions -->
     <string name="payment_method_prompt">Preferred Payment Method</string>
     <string-array name="payment_method">
-        <item>Cash</item>
         <item>Credit Card</item>
+        <item>Mobile Wallet</item>
     </string-array>
     <!-- Strings Related To Mobile Services -->
     <string name="moblie_providers_prompt">Mobile Services Providers</string>
@@ -42,6 +42,8 @@
     <string name="tuv">TUV</string>
     <string name="wxyz">WXYZ</string>
     <!--electric activity-->
+    <string name="emptyAmt">Amount Cannot Be Empty</string>
+    <string name="meterNoLength">Invalid Meter Number</string>
     <string name="meter">Meter Number</string>
     <string name="cmeter">Confirm Meter Number</string>
     <string name="electric">Electric</string>
@@ -49,7 +51,7 @@
     <string name="proceed">Proceed</string>
     <string name="back">Back</string>
     <string name="page_logo">page logo</string>
-    <string name="amount">amount</string>
+    <string name="amount">Amount</string>
     <string name="reciver_card_number">Reciver card number</string>
     <string name="back_amount">Back Amount</string>
     <string name="custom">Custom</string>
@@ -62,9 +64,9 @@
     <string name="purchase">Purchase</string>
     <string name="top_up">Top up</string>
     <string name="telecom_company">Telecom Company</string>
-    <string name="phone_number">phone Number</string>
-
-
+    <string name="phone_number">Phone Number</string>
+    <string name="card_transfer">Card Transfer</string>
+    <string name="cardpay">Card Pay</string>
 
     <!--forms test-->
     <string name="action_settings">Settings</string>
@@ -72,7 +74,10 @@
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="btn_sign_up">Sign Up</string>
-    <string name="err_msg_name">Enter your full name</string>
-    <string name="err_msg_email">Enter valid email address</string>
+    <string name="err_amount">Invalid Amount</string>
+    <string name="err_reciveCardNumber">Invalid card Number</string>
     <string name="err_msg_password">Enter the password</string>
+    <string name="swipe_card">Please swipe your card</string>
+    <string name="todo">TODO</string>
+    <!--error msgs-->
 </resources>

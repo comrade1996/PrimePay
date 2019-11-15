@@ -38,6 +38,7 @@ dependencies {
 
 
     // third party dependencies -------------------------------------------------------------------
+    implementation "com.wajahatkarim3.easyvalidation:easyvalidation-core:1.0.1"
     implementation 'me.relex:circleindicator:1.2.2@aar'
     implementation 'com.balysv:material-ripple:1.0.2'                  // ripple effect
     implementation 'com.github.bumptech.glide:glide:4.10.0'             // image loader
@@ -56,7 +57,7 @@ dependencies {
 //Add the RxBinding dependency//
 
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
-
+//add volly
 
     //
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -64,8 +65,9 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
     ///////////////////////////
-
+    implementation 'com.basgeekball:awesome-validation:4.2'
 //    implementation fileTree(dir: 'libs', include: ['*.jar'])
 //    implementation 'com.android.support:appcompat-v7:23.0.1'
 //    implementation 'com.android.support:design:23.0.1'
+    //
 }

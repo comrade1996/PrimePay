@@ -92,7 +92,7 @@
                                     app:srcCompat="@drawable/cashier"/>
 
                             <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="79dp"
                                     android:layout_height="wrap_content"
                                     android:text="@string/purchase"
                                     android:textAlignment="center"
@@ -352,50 +352,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/top_up"
-                                    android:textAlignment="center"
-                                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                                    android:textColor="@color/grey_90"/>
-
-                        </LinearLayout>
-
-                    </com.balysv.materialripple.MaterialRippleLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/spacing_small"
-                        android:layout_weight="1"
-                        app:cardBackgroundColor="@color/grey_5"
-                        app:cardCornerRadius="3dp"
-                        app:cardElevation="0dp">
-
-                    <com.balysv.materialripple.MaterialRippleLayout
-                            style="@style/RippleStyleBlack"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:clickable="true"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:padding="@dimen/spacing_large">
-
-                            <ImageView
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"
-                                    android:layout_marginBottom="@dimen/spacing_smlarge"
-                                    android:layout_marginTop="@dimen/spacing_smlarge"
-                                    android:tint="@color/indigo_500"
-                                    app:srcCompat="@drawable/ic_directions_bike"/>
-
-                            <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="SUDANI"
                                     android:textAlignment="center"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                     android:textColor="@color/grey_90"/>

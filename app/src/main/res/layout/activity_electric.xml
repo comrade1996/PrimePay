@@ -6,10 +6,15 @@
               android:layout_height="match_parent"
               xmlns:card_view="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
-              tools:context="com.example.primepay.ui.Purchase">
+              tools:context=".electric">
 
-    <include layout="@layout/toolbar" />
-
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize" android:id="@+id/toolbar7" app:title="@string/electric"
+            app:titleTextColor="#F9F9F9"/>
     <androidx.core.widget.NestedScrollView
             android:id="@+id/nested_scroll_view"
             android:layout_width="match_parent"
@@ -23,13 +28,13 @@
                 android:orientation="vertical">
 
 
-            <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    card_view:cardElevation="8dp"
-                    app:cardCornerRadius="5dp"
-                    android:background="#ffffff">
+            <!--<androidx.cardview.widget.CardView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_margin="20dp"-->
+                    <!--card_view:cardElevation="8dp"-->
+                    <!--app:cardCornerRadius="5dp"-->
+                    <!--android:background="#ffffff">-->
 
                 <LinearLayout
                         android:layout_width="match_parent"
@@ -46,7 +51,7 @@
 
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            <!--</androidx.cardview.widget.CardView>-->
 
             <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -61,98 +66,41 @@
                 <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical" android:padding="15dp" >
 
-                    <LinearLayout
+
+                    <TextView
+                            android:text="@string/meter"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="18dp"
-                            android:layout_marginRight="18dp"
-                            android:layout_marginTop="18dp"
-                            android:background="@drawable/round_border">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/meterNumber"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/spacing_xxlarge"
-                                android:hint="@string/meter"
-                                app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:background="#00000000"
-                                    android:textSize="14sp"/>
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
+                            android:layout_height="wrap_content" android:id="@+id/textView11"
+                            android:textAlignment="center" android:textColor="@android:color/black"
+                            android:textSize="18sp" android:textStyle="bold"/>
+                    <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="18dp"
-                            android:layout_marginRight="18dp"
-                            android:layout_marginTop="18dp"
-                            android:background="@drawable/round_border">
+                            android:layout_height="match_parent" android:id="@+id/meterNoLayout"
+                            app:hintAnimationEnabled="false" app:hintEnabled="false">
 
-                        <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/meterAmount"
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/spacing_xxlarge"
-                                android:hint="@string/amount"
-                                app:errorEnabled="true">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:background="#00000000"
-                                    android:textSize="14sp"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="18dp"
-                            android:background="@drawable/round_border"/>
-
-                    <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal" android:baselineAligned="false">
-
-                        <LinearLayout
+                        <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="3"
-                                android:layout_gravity="center"
-                                android:layout_marginStart="18dp"
-                                android:background="@drawable/round_border"/>
-                        <LinearLayout
+                                android:hint="@string/meter" android:inputType="number"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                            android:text="@string/amount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:id="@+id/textView13"
+                            android:textColor="@android:color/black" android:textSize="18sp" android:textStyle="bold"
+                            android:textAlignment="center"/>
+                    <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" android:id="@+id/amountEL"
+                            app:hintAnimationEnabled="false" app:hintEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="3"
-                                android:layout_gravity="center"
-                                android:layout_marginStart="10dp"
-                                android:background="@drawable/round_border"/>
-                        <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="18dp"
-                                android:layout_marginStart="10dp"
-                                android:layout_weight="3"
-                                android:background="@drawable/round_border"/>
-
-                    </LinearLayout>
-
-                    <View
-                            android:layout_width="0dp"
-                            android:layout_height="@dimen/spacing_smlarge"/>
-
+                                android:hint="@string/amount" android:inputType="number|numberDecimal"/>
+                    </com.google.android.material.textfield.TextInputLayout>
                     <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -166,7 +114,7 @@
                     <Spinner
                             android:id="@+id/paymentMethodSpinner"
                             android:layout_width="match_parent"
-                            android:layout_height="70dp"
+                            android:layout_height="58dp"
                             android:layout_gravity="center"
                             android:entries="@array/payment_method"
                             android:prompt="@string/payment_method_prompt"/>
@@ -183,7 +131,7 @@
                             android:layout_gravity="center"
                             android:background="@drawable/rounded_button"
                             android:layout_marginLeft="20dp"
-                            android:layout_marginRight="20dp"/>
+                            android:layout_marginRight="20dp" android:id="@+id/proceedEL"/>
 
                     <Button
                             android:id="@+id/button"
@@ -200,7 +148,6 @@
                             android:textAllCaps="false"
                             android:layout_marginBottom="20dp"
                     />
-
 
 
                 </LinearLayout>
