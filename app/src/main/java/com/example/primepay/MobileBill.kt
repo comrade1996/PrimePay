@@ -1,11 +1,14 @@
 package com.example.primepay
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
 import com.basgeekball.awesomevalidation.utility.RegexTemplate
+import kotlinx.android.synthetic.main.activity_mobile_bill.*
+import kotlinx.android.synthetic.main.activity_purchase.*
 
 class MobileBill : AppCompatActivity() {
 
@@ -16,9 +19,33 @@ class MobileBill : AppCompatActivity() {
         mAwesomeValidation.addValidation(this, R.id.amountLayoutPB, RegexTemplate.NOT_EMPTY, R.string.err_amount)
         mAwesomeValidation.addValidation(this, R.id.phoneNumberBP, RegexTemplate.NOT_EMPTY, R.string.err_amount)
         val btn_click_me = findViewById(R.id.proceedBP) as Button
+        val backButton = findViewById(R.id.backButtonBP) as Button
+
         // set on-click listener
         btn_click_me.setOnClickListener {
-            mAwesomeValidation.validate();
+
+            if(mAwesomeValidation.validate())
+            {
+                println(paymentMethodSpinner.selectedItem.toString())
+                if(paymentMethodSpinner.selectedItem.toString() == "Credit Card")
+                {11
+                    val intent = Intent(baseContext, CardPay::class.java)
+                    intent.putExtra("EXTRA_SESSION_ID", "here")
+                    startActivity(intent)
+                }
+                if(paymentMethodSpinner.selectedItem.toString() == "Mobile Wallet")
+                {
+                    val intent = Intent(baseContext, WalletPay::class.java)
+                    intent.putExtra("EXTRA_SESSION_ID", "here")
+                    startActivity(intent)
+                }
+            }
+
         }
+
+        backButton.setOnClickListener {
+            this.finish()
+        }
+
     }
 }

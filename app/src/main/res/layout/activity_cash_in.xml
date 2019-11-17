@@ -15,12 +15,6 @@
             android:theme="?attr/actionBarTheme"
             android:minHeight="?attr/actionBarSize" android:id="@+id/toolbar6" app:title="Cash in"
             app:titleTextColor="#F9F9F9"/>
-    <androidx.core.widget.NestedScrollView
-            android:id="@+id/nested_scroll_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="none"
-            android:scrollingCache="true">
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -40,7 +34,7 @@
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="left"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                 <ImageView
@@ -75,16 +69,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" android:id="@+id/textView2"
                             android:textAlignment="center" android:textStyle="bold" android:textSize="18sp"
-                            android:textColor="@android:color/black"/>
+                            android:textColor="@android:color/black" android:padding="18dp"/>
                     <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" android:id="@+id/amountLayoutCI"
+                            android:layout_height="61dp" android:id="@+id/amountLayoutCI"
                             app:hintAnimationEnabled="false" app:hintEnabled="false" android:animationCache="false"
                             android:animateLayoutChanges="false">
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:hint="@string/amount" android:inputType="number|numberDecimal"
                                 android:textSize="14sp"/>
                     </com.google.android.material.textfield.TextInputLayout>
@@ -121,24 +115,6 @@
                             android:layout_width="0dp"
                             android:layout_height="@dimen/spacing_smlarge"/>
 
-                    <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/spacing_middle"
-                            android:text="@string/payment_options"
-                            android:textAlignment="center"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                            android:textColor="@color/grey_90"
-                            android:textStyle="bold"/>
-
-                    <Spinner
-                            android:id="@+id/paymentMethodSpinner"
-                            android:layout_width="match_parent"
-                            android:layout_height="55dp"
-                            android:layout_gravity="center"
-                            android:entries="@array/payment_method"
-                            android:prompt="@string/payment_method_prompt"/>
-
                     <Button
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -151,10 +127,10 @@
                             android:layout_gravity="center"
                             android:background="@drawable/rounded_button"
                             android:layout_marginLeft="20dp"
-                            android:layout_marginRight="20dp" android:id="@+id/proceedCashIn"/>
+                            android:layout_marginRight="20dp" android:id="@+id/proceedCI"/>
 
                     <Button
-                            android:id="@+id/button"
+                            android:id="@+id/backButtonCI"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/back"
@@ -175,7 +151,5 @@
 
 
         </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

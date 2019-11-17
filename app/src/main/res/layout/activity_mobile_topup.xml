@@ -66,24 +66,13 @@
                         android:layout_height="match_parent"
                         android:textAppearance="@style/TextAppearance.Medium.Bold" android:textAlignment="center"
                         android:textColor="@android:color/black"/>
-                <LinearLayout
+                <Spinner
+                        android:id="@+id/telecomMethodSpinner"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="18dp"
-                        android:layout_marginRight="18dp"
-                        android:layout_marginTop="18dp"
-                        android:background="@drawable/round_border">
-
-
-                    <Spinner
-                            android:id="@+id/telecomMethodSpinner"
-                            android:layout_width="match_parent"
-                            android:layout_height="42dp"
-                            android:layout_gravity="center"
-                            android:entries="@array/mobile_providers"
-                            android:prompt="@string/moblie_providers_prompt"/>
-
-                </LinearLayout>
+                        android:layout_height="42dp"
+                        android:layout_gravity="center"
+                        android:entries="@array/mobile_providers"
+                        android:prompt="@string/moblie_providers_prompt"/>
                 <TextView
                         android:text="@string/phone_number"
                         android:layout_width="match_parent"
@@ -127,24 +116,13 @@
                         android:textColor="@color/grey_90"
                         android:textStyle="bold"/>
 
-                <LinearLayout
+                <Spinner
+                        android:id="@+id/paymentMethodSpinner"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="18dp"
-                        android:layout_marginRight="18dp"
-                        android:layout_marginTop="18dp"
-                        android:background="@drawable/round_border">
-
-                    <Spinner
-                            android:id="@+id/paymentMethodSpinner"
-                            android:layout_width="match_parent"
-                            android:layout_height="42dp"
-                            android:layout_gravity="center"
-                            android:entries="@array/payment_method"
-                            android:prompt="@string/payment_method_prompt"/>
-
-
-                </LinearLayout>
+                        android:layout_height="42dp"
+                        android:layout_gravity="center"
+                        android:entries="@array/payment_method"
+                        android:prompt="@string/payment_method_prompt"/>
 
                 <Button
                         android:layout_width="match_parent"
@@ -161,7 +139,7 @@
                         android:layout_marginRight="20dp" android:id="@+id/proceedTU"/>
 
                 <Button
-                        android:id="@+id/button"
+                        android:id="@+id/backButtonTU"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/back"

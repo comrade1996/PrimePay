@@ -15,6 +15,7 @@
         <item>Credit Card</item>
         <item>Mobile Wallet</item>
     </string-array>
+
     <!-- Strings Related To Mobile Services -->
     <string name="moblie_providers_prompt">Mobile Services Providers</string>
     <string-array name="mobile_providers">
@@ -41,6 +42,16 @@
     <string name="pqrs">PQRS</string>
     <string name="tuv">TUV</string>
     <string name="wxyz">WXYZ</string>
+    <string name="need">We need to text you a</string>
+    <string name="code">confirmation code to get started.</string>
+    <string name="awsm">Awesome, Thanks!</string>
+    <string name="sent">We have sent a confirmation code.</string>
+    <string name="soon">You should get it soon.</string>
+    <string name="why">why?</string>
+    <string name="phone">PHONE NUMBER</string>
+    <string name="verify">VERIFY</string>
+    <string name="resend">RESEND</string>
+    <string name="sd">+249</string>
     <!--electric activity-->
     <string name="emptyAmt">Amount Cannot Be Empty</string>
     <string name="meterNoLength">Invalid Meter Number</string>
@@ -79,5 +90,6 @@
     <string name="err_msg_password">Enter the password</string>
     <string name="swipe_card">Please swipe your card</string>
     <string name="todo">TODO</string>
+    <string name="validate">Proceed</string>
     <!--error msgs-->
 </resources>

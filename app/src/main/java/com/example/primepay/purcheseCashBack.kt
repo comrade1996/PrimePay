@@ -1,6 +1,7 @@
 
 package com.example.primepay
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -17,9 +18,23 @@ class purcheseCashBack : AppCompatActivity() {
         mAwesomeValidation.addValidation(this, R.id.amountLayoutPCB, RegexTemplate.NOT_EMPTY, R.string.err_amount)
         mAwesomeValidation.addValidation(this, R.id.backamountLayoutPCB, RegexTemplate.NOT_EMPTY, R.string.err_amount)
         val btn_click_me = findViewById(R.id.proceedPCB) as Button
+        val backButton = findViewById<Button>(R.id.backbuttonPCB)
         // set on-click listener
         btn_click_me.setOnClickListener {
-            mAwesomeValidation.validate();
+
+            if(mAwesomeValidation.validate())
+            {
+
+                val intent = Intent(baseContext, CardPay::class.java)
+                intent.putExtra("EXTRA_SESSION_ID", "here")
+                startActivity(intent)
+
+            }
+
+        }
+
+        backButton.setOnClickListener {
+            this.finish()
         }
     }
 }

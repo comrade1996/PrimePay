@@ -1,5 +1,6 @@
 package com.example.primepay
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -26,11 +27,32 @@ class electric : AppCompatActivity() {
         mAwesomeValidation.addValidation(this, R.id.meterNoLayout, RegexTemplate.NOT_EMPTY, R.string.err_amount)
         mAwesomeValidation.addValidation(this, R.id.amountEL, RegexTemplate.NOT_EMPTY, R.string.err_amount)
         val btn_click_me = findViewById(R.id.proceedEL) as Button
+        val backButton = findViewById<Button>(R.id.backButtonEL)
         // set on-click listener
         btn_click_me.setOnClickListener {
-            mAwesomeValidation.validate();
+
+            if(mAwesomeValidation.validate())
+            {
+                println(paymentMethodSpinner.selectedItem.toString())
+                if(paymentMethodSpinner.selectedItem.toString() == "Credit Card")
+                {
+                    val intent = Intent(baseContext, CardPay::class.java)
+                    intent.putExtra("EXTRA_SESSION_ID", "here")
+                    startActivity(intent)
+                }
+                if(paymentMethodSpinner.selectedItem.toString() == "Mobile Wallet")
+                {
+                    val intent = Intent(baseContext, WalletPay::class.java)
+                    intent.putExtra("EXTRA_SESSION_ID", "here")
+                    startActivity(intent)
+                }
+            }
+
         }
 
+        backButton.setOnClickListener {
+            this.finish()
+        }
         }
 //
 //    override fun onStart() {

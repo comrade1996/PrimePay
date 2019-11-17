@@ -1,17 +1,14 @@
 package com.example.primepay.ui.login
 
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.provider.ContactsContract
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
@@ -20,22 +17,48 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.example.primepay.R
-import com.example.primepay.ui.Purchase
+//import com.example.primepay.api.WolfRequest
+import com.example.primepay.api.apiHandler
+//import com.example.primepay.api.APIController
+//import com.example.primepay.api.ServiceVolley
 import com.example.primepay.ui.dash
-import com.jakewharton.rxbinding2.widget.RxTextView
-import io.reactivex.android.schedulers.AndroidSchedulers
-import kotlinx.android.synthetic.main.activity_login.view.*
-import java.util.concurrent.TimeUnit
+//import com.github.kittinunf.fuel.Fuel
+import org.json.JSONObject
+
 
 class LoginActivity2 : AppCompatActivity() {
+
+//    companion object {
+//        private class DownloadData : AsyncTask<String, Void, String>() {
+//            private val TAG = "DownloadData"
+//
+//            override fun onPostExecute(result: String?) {
+//                super.onPostExecute(result)
+//                Log.d(TAG, "onPostExecute: parameter is $result")
+//            }
+//
+//            override fun doInBackground(vararg url: String?): String {
+//                val example =  ApiRoute();
+//                var json = example.bowlingJson("Jesse", "Jake")
+//                var response = example.post("https://jsonplaceholder.typicode.com/todos/1",json)
+//                println("GGGGGGGGGAAAAAAAAAAAAAFFFFFFFFFFAAAAAAAAAAARrrrrrrr")
+//                println(response.toString())
+//
+//                return response.length()
+//             }
+//        }
+//    }
+
+
 
     private lateinit var loginViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
-
         val username = findViewById<EditText>(R.id.username)
         val password = findViewById<EditText>(R.id.password)
         val login = findViewById<Button>(R.id.login)
@@ -110,6 +133,33 @@ class LoginActivity2 : AppCompatActivity() {
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
+
+//         val test =DownloadData()
+//        val x =   test.execute("dfsdf")
+//        println(x)
+
+//        val service = ServiceVolley()
+//        val apiController = APIController(service)
+
+        val path = "example_endpoint"
+        val params = JSONObject()
+        params.put("email", "admin@admin.com")
+        params.put("password", "password")
+
+//
+//        title: 'foo',
+//        body: 'bar',
+//        userId: 1
+//        var user = ArrayList<LoggedInUser>()
+       val apihand = apiHandler()
+//        println("ddddddddddddddddddddd")
+        apihand.sendPostRequest("http://www.scientia-sd.com/api/login",params,this)
+//        apiController.post("todos/1", params) { response ->
+//            // Parse the result
+//            println(response)
+//        }
+
+
         val welcome = getString(R.string.welcome)
         val displayName = model.displayName
         // TODO : initiate successful logged in experience
@@ -143,3 +193,5 @@ fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit) {
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
     })
 }
+
+

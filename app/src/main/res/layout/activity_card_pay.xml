@@ -25,13 +25,13 @@
             android:layout_height="wrap_content" android:layout_marginBottom="20dp">
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="286dp" card_view:srcCompat="@drawable/cardswipe"
+                android:layout_height="286dp"
                 android:id="@+id/imageView3" android:contentDescription="@string/todo" android:padding="30dp"
                 app:srcCompat="@drawable/swipecard"/>
     </androidx.cardview.widget.CardView>
 
     <Button
-            android:id="@+id/button"
+            android:id="@+id/backBbuttonCP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/back"

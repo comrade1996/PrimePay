@@ -8,353 +8,52 @@
               android:weightSum="10"
               tools:context=".CustomKeyboard">
 
-    <androidx.viewpager.widget.ViewPager
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4.75"
-            android:id="@+id/vpager"/>
 
-    <me.relex.circleindicator.CircleIndicator
-            android:id="@+id/indicator"
+    <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            app:ci_drawable="@drawable/whitecircle"
-            app:ci_drawable_unselected="@drawable/greycircle"
-            app:ci_width="7dp"
-            app:ci_height="7dp"
+            android:layout_height="268dp" android:textAlignment="center">
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView
+                    android:text="12209,1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView16" android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toTopOf="parent" android:textColor="@android:color/black"
+                    android:textSize="36sp" android:textStyle="bold"/>
+            <TextView
+                    android:text="SDG"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView19" app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp" app:layout_constraintTop_toBottomOf="@+id/textView16"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+                    android:textColor="@android:color/black" android:textSize="36sp" android:textStyle="bold"
+                    app:layout_constraintHorizontal_bias="0.498" app:layout_constraintVertical_bias="0.16"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+    <com.chaos.view.PinView
+            android:id="@+id/pinView"
+            android:layout_gravity="center"
+            android:inputType="numberPassword"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"/>
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4.75"
-            android:orientation="vertical"
-            android:weightSum="4">
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:weightSum="3"
-                android:orientation="horizontal"
-                android:background="@color/keyboard">
-
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtone"
-                        android:text="@string/one"
-                        android:textSize="30sp"
-                        android:textColor="@android:color/black"
-                        android:layout_gravity="center"/>
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:textSize="15sp"
-                        android:gravity="center"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-
-            <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/darker_gray"/>
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txttwo"
-                        android:text="@string/two"
-                        android:textSize="30sp"
-                        android:layout_gravity="center"
-                        android:textColor="@android:color/black"/>
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtabc"
-                        android:text="@string/abc"
-                        android:textSize="15sp"
-                        android:gravity="center"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-
-            <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/darker_gray"/>
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtthree"
-                        android:text="@string/three"
-                        android:textSize="30sp"
-                        android:textColor="@android:color/black"
-                        android:layout_gravity="center"/>
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtdef"
-                        android:text="@string/def"
-                        android:textSize="15sp"
-                        android:gravity="center"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray"/>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:weightSum="3"
-                android:orientation="horizontal"
-                android:background="@color/keyboard">
-
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtfour"
-                        android:text="@string/four"
-                        android:textSize="30sp"
-                        android:textColor="@android:color/black"
-                        android:layout_gravity="center"/>
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtghi"
-                        android:text="@string/ghi"
-                        android:textSize="15sp"
-                        android:gravity="center"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-
-            <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/darker_gray"/>
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtfive"
-                        android:text="@string/five"
-                        android:textSize="30sp"
-                        android:textColor="@android:color/black"
-                        android:layout_gravity="center"/>
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtjkl"
-                        android:text="@string/jkl"
-                        android:textSize="15sp"
-                        android:gravity="center"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-
-            <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/darker_gray"/>
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtsix"
-                        android:text="@string/six"
-                        android:textSize="30sp"
-                        android:textColor="@android:color/black"
-                        android:layout_gravity="center"/>
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtmno"
-                        android:text="@string/mno"
-                        android:textSize="15sp"
-                        android:gravity="center"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-
-        </LinearLayout>
-        <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray"/>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:weightSum="3"
-                android:orientation="horizontal"
-                android:background="@color/keyboard">
-
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtseven"
-                        android:text="@string/seven"
-                        android:textSize="30sp"
-                        android:textColor="@android:color/black"
-                        android:layout_gravity="center"/>
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtpqrs"
-                        android:text="@string/pqrs"
-                        android:textSize="15sp"
-                        android:gravity="center"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-
-            <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/darker_gray"/>
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txteight"
-                        android:text="@string/eight"
-                        android:textSize="30sp"
-                        android:textColor="@android:color/black"
-                        android:layout_gravity="center"/>
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txttuv"
-                        android:text="@string/tuv"
-                        android:textSize="15sp"
-                        android:gravity="center"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-
-            <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/darker_gray"/>
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtnine"
-                        android:text="@string/nine"
-                        android:textSize="30sp"
-                        android:textColor="@android:color/black"
-                        android:layout_gravity="center"/>
-                <customfonts.MyTextView_Roboto_Medium
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/txtwxyz"
-                        android:text="@string/wxyz"
-                        android:textSize="15sp"
-                        android:gravity="center"
-                        android:textColor="@android:color/black"/>
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray"/>
-
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:weightSum="3"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-
-            <customfonts.MyTextView_Roboto_Medium
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/txtok"
-                    android:textSize="30sp"
-                    android:background="@color/back"
-                    android:textColor="@android:color/black"
-                    android:gravity="center"/>
-
-            <customfonts.MyTextView_Roboto_Medium
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/txtzero"
-                    android:text="@string/zero"
-                    android:textSize="30sp"
-                    android:background="@color/keyboard"
-                    android:textColor="@android:color/black"
-                    android:gravity="center"/>
-
-
-            <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@color/back"
-                    android:padding="22dp"
-                    android:src="@drawable/ic_backspace"/>
-
-
-
-        </LinearLayout>
-
-
-
-
-
-
-    </LinearLayout>
-
+            style="@style/PinWidget.PinView" />
+    <Button
+            android:id="@+id/validate_button"
+            android:layout_gravity="center"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:text="@string/validate"
+            android:textColor="@color/indigo_500"/>
 
 
 
