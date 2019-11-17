@@ -15,7 +15,7 @@ class cashIn : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cash_in)
         val mAwesomeValidation = AwesomeValidation(ValidationStyle.BASIC)
-        mAwesomeValidation.addValidation(this, R.id.amountLayoutCI, RegexTemplate.NOT_EMPTY, R.string.err_amount)
+        mAwesomeValidation.addValidation(this, R.id.amountLayoutCI,"^\\s*(?=.*[1-9])\\d*(?:\\.\\d{1,2})?\\s*\$",R.string.err_amount)
         val btn_click_me = findViewById(R.id.proceedCI) as Button
         val backButton = findViewById(R.id.backButtonCI) as Button
         // set on-click listener

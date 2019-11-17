@@ -55,8 +55,9 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
+                                android:id="@+id/phoneWP"
                                 android:layout_height="wrap_content"
-                                android:hint="9XXXXXXXXX" android:inputType="number|numberDecimal"
+                                android:hint="@string/hint_phone_number" android:inputType="number|numberDecimal"
                                 android:textSize="14sp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 

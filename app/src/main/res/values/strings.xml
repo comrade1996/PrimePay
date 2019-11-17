@@ -68,7 +68,7 @@
     <string name="custom">Custom</string>
     <string name="e15">E15</string>
     <string name="mobile_services">Mobile Services</string>
-    <string name="purchases">Purchases</string>
+    <string name="purchases">Operations</string>
     <string name="mohe">MOHE</string>
     <string name="bill_payments">Bill Payments</string>
     <string name="government">Government Services</string>
@@ -91,5 +91,9 @@
     <string name="swipe_card">Please swipe your card</string>
     <string name="todo">TODO</string>
     <string name="validate">Proceed</string>
+    <string name="err_phone_number">Invalid Phone Number</string>
+    <string name="hint_phone_number">Enter your number without (0)</string>
+    <string name="err_meter_number">Invaild Meter Number</string>
+    <string name="err_pin">invaild pin</string>
     <!--error msgs-->
 </resources>

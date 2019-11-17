@@ -344,7 +344,7 @@
                                     android:layout_height="35dp"
                                     android:layout_marginBottom="@dimen/spacing_smlarge"
                                     android:layout_marginTop="@dimen/spacing_smlarge"
-                                    android:tint="#101E79"
+                                    android:tint="#5C6BBE"
                                     app:srcCompat="@drawable/mobile"/>
 
                             <TextView
@@ -353,7 +353,7 @@
                                     android:text="@string/top_up"
                                     android:textAlignment="center"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                                    android:textColor="#1C297F"/>
+                                    android:textColor="@android:color/black"/>
 
                         </LinearLayout>
 

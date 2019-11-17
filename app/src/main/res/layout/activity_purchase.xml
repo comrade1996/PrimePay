@@ -69,9 +69,10 @@
                     <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:id="@+id/amountP"
                             android:hint="@string/amount" android:textColorLink="@color/light_blue_700"
                             android:textColorHighlight="@color/light_blue_700"
-                            android:inputType="number|numberDecimal"/>
+                            android:inputType="numberDecimal"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <View

@@ -16,8 +16,8 @@ class MobileBill : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mobile_bill)
         val mAwesomeValidation = AwesomeValidation(ValidationStyle.BASIC)
-        mAwesomeValidation.addValidation(this, R.id.amountLayoutPB, RegexTemplate.NOT_EMPTY, R.string.err_amount)
-        mAwesomeValidation.addValidation(this, R.id.phoneNumberBP, RegexTemplate.NOT_EMPTY, R.string.err_amount)
+        mAwesomeValidation.addValidation(this, R.id.amountLayoutPB,"^\\s*(?=.*[1-9])\\d*(?:\\.\\d{1,2})?\\s*\$" ,R.string.err_amount)
+        mAwesomeValidation.addValidation(this, R.id.phoneNumberBP, "^[0-9]{9}\$",R.string.err_phone_number)
         val btn_click_me = findViewById(R.id.proceedBP) as Button
         val backButton = findViewById(R.id.backButtonBP) as Button
 

@@ -14,6 +14,7 @@ import com.example.primepay.CardPay
 import com.example.primepay.R
 import com.example.primepay.WalletPay
 import kotlinx.android.synthetic.main.activity_purchase.*
+import org.json.JSONObject
 
 
 class Purchase : AppCompatActivity() {
@@ -24,26 +25,29 @@ class Purchase : AppCompatActivity() {
 
 
         val mAwesomeValidation = AwesomeValidation(ValidationStyle.BASIC)
-        mAwesomeValidation.addValidation(this, R.id.purcheseAmount," ^(0*[1-9][0-9]*(\\.[0-9]+)?|0+\\.[0-9]*[1-9][0-9]*)\$" , R.string.err_amount)
+        mAwesomeValidation.addValidation(this, R.id.purcheseAmount,"^\\s*(?=.*[1-9])\\d*(?:\\.\\d{1,2})?\\s*\$" , R.string.err_amount)
+
         val btn_click_me = findViewById(R.id.purcheseProceed) as Button
         val backButton = findViewById(R.id.backBbuttonP) as Button
 
         // set on-click listener
         btn_click_me.setOnClickListener {
-
+                println(amountP.text.toString())
             if(mAwesomeValidation.validate())
             {
+                var params = JSONObject()
+                params.put("amount",amountP.text.toString())
                 println(paymentMethodSpin.selectedItem.toString())
                 if(paymentMethodSpin.selectedItem.toString() == "Credit Card")
                 {
                     val intent = Intent(baseContext, CardPay::class.java)
-                    intent.putExtra("EXTRA_SESSION_ID", "here")
+                    intent.putExtra("data", params.toString())
                     startActivity(intent)
                 }
                 if(paymentMethodSpin.selectedItem.toString() == "Mobile Wallet")
                 {
                     val intent = Intent(baseContext, WalletPay::class.java)
-                    intent.putExtra("EXTRA_SESSION_ID", "here")
+                    intent.putExtra("data", params.toString())
                     startActivity(intent)
                 }
             }

@@ -99,7 +99,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="  9XXXXXXXXX" android:inputType="number"/>
+                                android:hint="@string/hint_phone_number" android:inputType="number"/>
                     </com.google.android.material.textfield.TextInputLayout>
                     <TextView
                             android:text="@string/amount"
@@ -115,7 +115,7 @@
                         <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="@string/amount" android:inputType="number|numberDecimal"/>
+                                android:hint="@string/amount" android:inputType="number"/>
                     </com.google.android.material.textfield.TextInputLayout>
                     <TextView
                             android:layout_width="match_parent"

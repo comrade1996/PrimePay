@@ -1,6 +1,7 @@
 package com.example.primepay.ui.login
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -57,6 +58,7 @@ class LoginActivity2 : AppCompatActivity() {
 
 
         super.onCreate(savedInstanceState)
+
 
         setContentView(R.layout.activity_login)
         val username = findViewById<EditText>(R.id.username)

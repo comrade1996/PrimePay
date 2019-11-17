@@ -24,8 +24,8 @@ class electric : AppCompatActivity() {
         setContentView(R.layout.activity_electric)
 
      val mAwesomeValidation = AwesomeValidation(ValidationStyle.BASIC)
-        mAwesomeValidation.addValidation(this, R.id.meterNoLayout, RegexTemplate.NOT_EMPTY, R.string.err_amount)
-        mAwesomeValidation.addValidation(this, R.id.amountEL, RegexTemplate.NOT_EMPTY, R.string.err_amount)
+        mAwesomeValidation.addValidation(this, R.id.meterNoLayout,  "^[0-9]{1,13}\$", R.string.err_meter_number)
+        mAwesomeValidation.addValidation(this, R.id.amountEL, "^\\s*(?=.*[1-9])\\d*(?:\\.\\d{1,2})?\\s*\$" ,R.string.err_amount)
         val btn_click_me = findViewById(R.id.proceedEL) as Button
         val backButton = findViewById<Button>(R.id.backButtonEL)
         // set on-click listener

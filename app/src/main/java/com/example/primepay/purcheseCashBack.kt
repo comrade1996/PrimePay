@@ -15,8 +15,8 @@ class purcheseCashBack : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_purchese_cash_back)
         val mAwesomeValidation = AwesomeValidation(ValidationStyle.BASIC)
-        mAwesomeValidation.addValidation(this, R.id.amountLayoutPCB, RegexTemplate.NOT_EMPTY, R.string.err_amount)
-        mAwesomeValidation.addValidation(this, R.id.backamountLayoutPCB, RegexTemplate.NOT_EMPTY, R.string.err_amount)
+        mAwesomeValidation.addValidation(this, R.id.amountLayoutPCB, "^\\s*(?=.*[1-9])\\d*(?:\\.\\d{1,2})?\\s*\$" , R.string.err_amount)
+        mAwesomeValidation.addValidation(this, R.id.backamountLayoutPCB, "^\\s*(?=.*[1-9])\\d*(?:\\.\\d{1,2})?\\s*\$" , R.string.err_amount)
         val btn_click_me = findViewById(R.id.proceedPCB) as Button
         val backButton = findViewById<Button>(R.id.backbuttonPCB)
         // set on-click listener

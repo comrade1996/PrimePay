@@ -16,8 +16,8 @@ class MobileTopup : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mobile_topup)
         val mAwesomeValidation = AwesomeValidation(ValidationStyle.BASIC)
-        mAwesomeValidation.addValidation(this, R.id.amountLayoutTU, RegexTemplate.NOT_EMPTY, R.string.err_amount)
-        mAwesomeValidation.addValidation(this, R.id.phoneNumberTU, RegexTemplate.NOT_EMPTY, R.string.err_amount)
+        mAwesomeValidation.addValidation(this, R.id.amountLayoutTU,"^\\s*(?=.*[1-9])\\d*(?:\\.\\d{1,2})?\\s*\$" ,R.string.err_amount)
+        mAwesomeValidation.addValidation(this, R.id.phoneNumberTU,  "^[0-9]{9}\$", R.string.err_phone_number)
         val btn_click_me = findViewById(R.id.proceedTU) as Button
         // set on-click listener
         val backButton = findViewById(R.id.backButtonTU) as Button

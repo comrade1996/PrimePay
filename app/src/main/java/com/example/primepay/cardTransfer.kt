@@ -16,8 +16,8 @@ class cardTransfer : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card_transfer)
         val mAwesomeValidation = AwesomeValidation(ValidationStyle.BASIC)
-        mAwesomeValidation.addValidation(this, R.id.cardNumberLayoutCT,RegexTemplate.NOT_EMPTY, R.string.err_reciveCardNumber)
-        mAwesomeValidation.addValidation(this, R.id.amountLayoutCT, RegexTemplate.NOT_EMPTY, R.string.err_amount)
+        mAwesomeValidation.addValidation(this, R.id.cardNumberLayoutCT,"^[0-9]{16,19}\$", R.string.err_reciveCardNumber)
+        mAwesomeValidation.addValidation(this, R.id.amountLayoutCT, "^\\s*(?=.*[1-9])\\d*(?:\\.\\d{1,2})?\\s*\$" ,R.string.err_amount)
         val btn_click_me = findViewById(R.id.proceedCardTransfer) as Button
         val backButton = findViewById(R.id.backBbuttonCT) as Button
         // set on-click listener
