@@ -8,6 +8,8 @@ import android.widget.Button
 import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
 import com.basgeekball.awesomevalidation.utility.RegexTemplate
+import kotlinx.android.synthetic.main.activity_purchese_cash_back.*
+import org.json.JSONObject
 
 class purcheseCashBack : AppCompatActivity() {
 
@@ -25,8 +27,11 @@ class purcheseCashBack : AppCompatActivity() {
             if(mAwesomeValidation.validate())
             {
 
+                var params = JSONObject()
+                params.put("amount",amountPCB.text.toString())
+                params.put("backamount",backamountPCB.text.toString())
                 val intent = Intent(baseContext, CardPay::class.java)
-                intent.putExtra("EXTRA_SESSION_ID", "here")
+                intent.putExtra("data", params.toString())
                 startActivity(intent)
 
             }

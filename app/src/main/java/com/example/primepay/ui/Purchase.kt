@@ -37,14 +37,14 @@ class Purchase : AppCompatActivity() {
             {
                 var params = JSONObject()
                 params.put("amount",amountP.text.toString())
-                println(paymentMethodSpin.selectedItem.toString())
-                if(paymentMethodSpin.selectedItem.toString() == "Credit Card")
+                println(paymentMethodSpin.selectedItemId)
+                if(paymentMethodSpin.getSelectedItemPosition() == 0)
                 {
                     val intent = Intent(baseContext, CardPay::class.java)
                     intent.putExtra("data", params.toString())
                     startActivity(intent)
                 }
-                if(paymentMethodSpin.selectedItem.toString() == "Mobile Wallet")
+                if(paymentMethodSpin.getSelectedItemPosition() == 1)
                 {
                     val intent = Intent(baseContext, WalletPay::class.java)
                     intent.putExtra("data", params.toString())

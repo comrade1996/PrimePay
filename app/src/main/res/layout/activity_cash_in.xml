@@ -77,9 +77,11 @@
                             android:animateLayoutChanges="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/amountCI"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:hint="@string/amount" android:inputType="number|numberDecimal"
+                                android:hint="@string/amount"
+                                android:inputType="number|numberDecimal"
                                 android:textSize="14sp"/>
                     </com.google.android.material.textfield.TextInputLayout>
                     <LinearLayout

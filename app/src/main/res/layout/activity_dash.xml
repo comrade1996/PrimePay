@@ -3,18 +3,28 @@
               xmlns:app="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:fitsSystemWindows="true"
               android:background="@android:color/white"
               android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/Toolbar.Light"
-            app:titleTextColor="#FDFDFE"
-            app:title="PrimePay" android:background="@color/indigo_500"/>
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/Widget.AppCompat.ActionMode"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:theme="@style/Widget.AppCompat.ActionBar"
+                app:titleTextColor="#FDFDFE"
+                app:title="PrimePay" android:background="@color/indigo_500"/>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <View
             android:layout_width="match_parent"
@@ -139,7 +149,7 @@
                             <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Cash in"
+                                    android:text="@string/cash_in"
                                     android:textAlignment="center"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                     android:textColor="@color/grey_90" android:textSize="12sp"/>
@@ -185,7 +195,7 @@
                             <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Card Transfer"
+                                    android:text="@string/card_transfer"
                                     android:textAlignment="center"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                     android:textColor="@color/grey_90" android:textSize="12sp"/>
@@ -232,7 +242,7 @@
                             <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Purchase with Cashback"
+                                    android:text="@string/cash_back"
                                     android:textAlignment="center"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                                     android:textColor="@color/grey_90" android:textSize="10sp"/>
@@ -475,7 +485,7 @@
                                     android:text="@string/mohe"
                                     android:textAlignment="center"
                                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                                    android:textColor="@color/grey_90"/>
+                                    android:textColor="@color/grey_90" android:textSize="9dp"/>
 
                         </LinearLayout>
 

@@ -76,6 +76,7 @@
                         android:id="@+id/cardNumberLayoutCT">
 
                     <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/cardNUmberCT"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/reciver_card_number" android:inputType="number"/>
@@ -93,6 +94,7 @@
                         android:id="@+id/amountLayoutCT">
 
                     <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/amountCT"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/amount" android:inputType="number|numberDecimal"/>

@@ -29,30 +29,7 @@ import org.json.JSONObject
 
 class LoginActivity2 : AppCompatActivity() {
 
-//    companion object {
-//        private class DownloadData : AsyncTask<String, Void, String>() {
-//            private val TAG = "DownloadData"
-//
-//            override fun onPostExecute(result: String?) {
-//                super.onPostExecute(result)
-//                Log.d(TAG, "onPostExecute: parameter is $result")
-//            }
-//
-//            override fun doInBackground(vararg url: String?): String {
-//                val example =  ApiRoute();
-//                var json = example.bowlingJson("Jesse", "Jake")
-//                var response = example.post("https://jsonplaceholder.typicode.com/todos/1",json)
-//                println("GGGGGGGGGAAAAAAAAAAAAAFFFFFFFFFFAAAAAAAAAAARrrrrrrr")
-//                println(response.toString())
-//
-//                return response.length()
-//             }
-//        }
-//    }
 
-
-
-    private lateinit var loginViewModel: LoginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -66,75 +43,20 @@ class LoginActivity2 : AppCompatActivity() {
         val login = findViewById<Button>(R.id.login)
         val loading = findViewById<ProgressBar>(R.id.loading)
 
-        loginViewModel = ViewModelProviders.of(this, LoginViewModelFactory())
-            .get(LoginViewModel::class.java)
+        login.setOnClickListener {
 
-        loginViewModel.loginFormState.observe(this@LoginActivity2, Observer {
-            val loginState = it ?: return@Observer
+            val apihand = apiHandler()
+        println("ddddddddddddddddddddd")
+        apihand.sendcall2(this,"http://www.scientia-sd.com/api/login")
+                val intent = Intent(baseContext, dash::class.java)
 
+                startActivity(intent)
+            this.finish()
 
-
-            // disable login button unless both username / password is valid
-            login.isEnabled = loginState.isDataValid
-
-            if (loginState.usernameError != null) {
-                username.error = getString(loginState.usernameError)
-            }
-            if (loginState.passwordError != null) {
-                password.error = getString(loginState.passwordError)
-            }
-        })
-
-        loginViewModel.loginResult.observe(this@LoginActivity2, Observer {
-            val loginResult = it ?: return@Observer
-
-            loading.visibility = View.GONE
-            if (loginResult.error != null) {
-                showLoginFailed(loginResult.error)
-            }
-            if (loginResult.success != null) {
-                updateUiWithUser(loginResult.success)
-            }
-            setResult(Activity.RESULT_OK)
-
-            //Complete and destroy login activity once successful
-            finish()
-        })
-
-        username.afterTextChanged {
-            loginViewModel.loginDataChanged(
-                username.text.toString(),
-                password.text.toString()
-            )
         }
 
-        password.apply {
-            afterTextChanged {
-                loginViewModel.loginDataChanged(
-                    username.text.toString(),
-                    password.text.toString()
-                )
-            }
-
-            setOnEditorActionListener { _, actionId, _ ->
-                when (actionId) {
-                    EditorInfo.IME_ACTION_DONE ->
-                        loginViewModel.login(
-                            username.text.toString(),
-                            password.text.toString()
-                        )
-                }
-                false
-            }
-
-            login.setOnClickListener {
-                loading.visibility = View.VISIBLE
-                loginViewModel.login(username.text.toString(), password.text.toString())
-            }
-        }
     }
-
-    private fun updateUiWithUser(model: LoggedInUserView) {
+    private fun updateUiWithUser() {
 
 //         val test =DownloadData()
 //        val x =   test.execute("dfsdf")
@@ -155,7 +77,7 @@ class LoginActivity2 : AppCompatActivity() {
 //        var user = ArrayList<LoggedInUser>()
        val apihand = apiHandler()
 //        println("ddddddddddddddddddddd")
-        apihand.sendPostRequest("http://www.scientia-sd.com/api/login",params,this)
+//        apihand.sendPostRequest("http://www.scientia-sd.com/api/login",params,this)
 //        apiController.post("todos/1", params) { response ->
 //            // Parse the result
 //            println(response)
@@ -163,11 +85,11 @@ class LoginActivity2 : AppCompatActivity() {
 
 
         val welcome = getString(R.string.welcome)
-        val displayName = model.displayName
+//        val displayName = model.displayName
         // TODO : initiate successful logged in experience
         Toast.makeText(
             applicationContext,
-            "$welcome $displayName",
+            "welcome ",
             Toast.LENGTH_LONG
         ).show()
 

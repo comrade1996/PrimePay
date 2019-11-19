@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">PrimePay</string>
+    <string name="card_transfer">Card Transfer</string>
+    <string name="cash_in">Cash In</string>
+    <string name="change_lang">Change Language To Arabic</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -76,7 +79,7 @@
     <string name="top_up">Top up</string>
     <string name="telecom_company">Telecom Company</string>
     <string name="phone_number">Phone Number</string>
-    <string name="card_transfer">Card Transfer</string>
+    <string name="cash_back">Purchase with cash back</string>
     <string name="cardpay">Card Pay</string>
 
     <!--forms test-->

@@ -1,26 +1,15 @@
 package com.example.primepay
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Base64
-import android.util.Log
 import android.widget.Button
-import android.widget.Toast
 import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
-import com.mukesh.OtpView
 import kotlinx.android.synthetic.main.activity_custom_keyboard.*
-import kotlinx.android.synthetic.main.activity_wallet_pay.*
+import org.jpos.security.EncryptedPIN
 import org.json.JSONObject
-import java.io.IOException
-import java.nio.charset.StandardCharsets
-import java.security.KeyFactory.*
-import java.security.NoSuchAlgorithmException
-import java.security.PublicKey
-import java.security.spec.InvalidKeySpecException
-import java.security.spec.X509EncodedKeySpec
 import javax.crypto.Cipher
+import javax.crypto.spec.SecretKeySpec
 
 
 class CustomKeyboard : AppCompatActivity() {
@@ -29,15 +18,18 @@ class CustomKeyboard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_custom_keyboard)
         val mAwesomeValidation = AwesomeValidation(ValidationStyle.BASIC)
-        mAwesomeValidation.addValidation(this, R.id.pinView, "^[0-9]{4}\$",R.string.err_pin)
-        val btn_click_me = findViewById(R.id.validate_button) as Button
-        val params = JSONObject(getIntent().getStringExtra("data"));
-        amountCK.text= params.getString("amount")
+        mAwesomeValidation.addValidation(this, R.id.pinView, "^[0-9]{4}\$", R.string.err_pin)
+        val btn_click_me = findViewById<Button>(R.id.validate_button)
+        val params = JSONObject(getIntent().getStringExtra("data"))
+        amountCK.text = params.getString("amount")
         btn_click_me.setOnClickListener {
-            if(mAwesomeValidation.validate()){
-                params.put("pin",encrypt(pinView.text.toString(),"hoooola"))
-                Toast.makeText(this, params.toString(), Toast.LENGTH_LONG).show()
+            if (mAwesomeValidation.validate()) {
+                //var en = EncryptedPIN()
+                // params.put("pin",encrypt(pinView.text.toString(),"hoooola"))
+                //Toast.makeText(this, "worked!", Toast.LENGTH_LONG).show()
+                // println(customizedEncrypt().encrypt(pinView.text.toString()))
 //                this.finish()
+                println(encrypt(pinView.text.toString(),"0e329232ea6d0d73"))
             }
 
         }
@@ -49,21 +41,56 @@ class CustomKeyboard : AppCompatActivity() {
     }
 
 
-    fun encrypt(message: String, key: String): String {
-        val encryptedBytes: ByteArray
-        val pubKey: PublicKey? = readPublicKey(pinView.text.toString())
-        val cipher: Cipher = Cipher.getInstance("<i>DES/CBC/PCS5Padding</i>")
-        cipher.init(Cipher.ENCRYPT_MODE, pubKey)
-        encryptedBytes = cipher.doFinal(message.toByteArray(StandardCharsets.UTF_8))
-        return Base64.encodeToString(encryptedBytes, Base64.DEFAULT)
+    private fun String.toHexByteArray(): ByteArray {
+        val bytes = ByteArray(this.length / 2)
+        for (i in bytes.indices) {
+            bytes[i] = this.substring(i * 2, i * 2 + 2).toInt(16).toByte()
+        }
+        return bytes
     }
 
-
-    @Throws(IOException::class, NoSuchAlgorithmException::class, InvalidKeySpecException::class)
-    fun readPublicKey(filename: String): PublicKey {
-        val publicSpec = X509EncodedKeySpec(filename.toByteArray())
-        val keyFactory = getInstance("<i>DES/CBC/PCS5Padding</i>")
-        return keyFactory.generatePublic(publicSpec)
+    private fun ByteArray.printHexBytes() {
+        for (b in this) {
+            val bb = if (b >= 0) b.toInt() else b + 256
+            print(bb.toString(16).padStart(2, '0'))
+        }
+        println()
     }
 
+    private fun encrypt(string: String, encryptionKey: String) {
+
+        val keyBytes = encryptionKey.toHexByteArray()
+        val key = SecretKeySpec(keyBytes, "DES")
+        val encCipher = Cipher.getInstance("DES")
+        encCipher.init(Cipher.ENCRYPT_MODE, key)
+        val plainBytes = string.toHexByteArray()
+        val encBytes = encCipher.doFinal(plainBytes)
+        return encBytes.printHexBytes()
+
+    }
+
+//    fun customizedEncrypt(): Encryption {
+//
+//        var encryption: Encryption? = null
+//        // we also can generate an entire new Builder
+//        try {
+//            encryption = Encryption.Builder()
+//                .setKeyLength(8)
+//                .setKeyAlgorithm("DES")
+//                .setCharsetName("UTF8")
+//                .setIterationCount(65536)
+//                .setKey("0E329232EA6D0D73")
+//                .setDigestAlgorithm("SHA1")
+//                .setSalt("A beautiful salt")
+//                .setBase64Mode(Base64.DEFAULT)
+//                .setAlgorithm("DES")
+//                .setSecureRandomAlgorithm("SHA1PRNG")
+//                .setSecretKeyType("PBKDF2WithHmacSHA1")
+//                .setIv(byteArrayOf(29, 88, -79, -101, -108, -38, -126, 90))
+//                .build()
+//        } catch (e: NoSuchAlgorithmException) {
+//            println("Something wrong: $e")
+//        }
+//        return encryption!!
+//    }
 }

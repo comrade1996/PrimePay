@@ -71,13 +71,17 @@
                         android:textSize="18sp" android:textStyle="bold"/>
                 <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" android:id="@+id/meterNoLayout"
-                        app:hintAnimationEnabled="false" app:hintEnabled="false">
+                        android:layout_height="match_parent"
+                        android:id="@+id/meterNoLayout"
+                        app:hintAnimationEnabled="false"
+                        app:hintEnabled="false">
 
                     <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/meterEL"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/meter" android:inputType="number"/>
+                            android:hint="@string/meter"
+                            android:inputType="number"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <TextView
                         android:text="@string/amount"
@@ -87,13 +91,16 @@
                         android:textAlignment="center"/>
                 <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" android:id="@+id/amountEL"
+                        android:layout_height="match_parent"
+                        android:id="@+id/amountLayoutEL"
                         app:hintAnimationEnabled="false" app:hintEnabled="false">
 
                     <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/amountEL"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/amount" android:inputType="number|numberDecimal"/>
+                            android:hint="@string/amount"
+                            android:inputType="number|numberDecimal"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <TextView
                         android:layout_width="match_parent"

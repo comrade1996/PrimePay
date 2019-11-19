@@ -81,29 +81,38 @@
                         android:textAlignment="center"/>
                 <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" app:hintAnimationEnabled="false" app:hintEnabled="false"
-                        android:id="@+id/phoneNumberTU">
+                        android:layout_height="match_parent"
+                        app:hintAnimationEnabled="false"
+                        app:hintEnabled="false"
+                        android:id="@+id/phoneNumberLayoutTU">
 
                     <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/phoneNumberTU"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/hint_phone_number" android:inputType="number"/>
+                            android:hint="@string/hint_phone_number"
+                            android:inputType="number"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <TextView
                         android:text="@string/amount"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/textView8"
-                        android:textAlignment="center" android:textColor="@android:color/black"
-                        android:textSize="18sp" android:textStyle="bold"/>
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView8"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
                 <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" app:hintAnimationEnabled="false" app:hintEnabled="false"
                         android:id="@+id/amountLayoutTU">
 
                     <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/amountTU"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/amount" android:inputType="number"/>
+                            android:hint="@string/amount"
+                            android:inputType="number"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView

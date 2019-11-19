@@ -75,9 +75,11 @@
                         app:hintEnabled="false" android:id="@+id/amountLayoutPCB">
 
                     <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/amountPCB"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/amount" android:inputType="number|numberDecimal"/>
+                            android:hint="@string/amount"
+                            android:inputType="number|numberDecimal"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <TextView
                         android:text="@string/back_amount"
@@ -91,9 +93,11 @@
                         app:hintEnabled="false" android:id="@+id/backamountLayoutPCB">
 
                     <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/backamountPCB"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/back_amount" android:inputType="number|numberDecimal"/>
+                            android:hint="@string/back_amount"
+                            android:inputType="number|numberDecimal"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button

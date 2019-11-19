@@ -9,6 +9,7 @@ import com.basgeekball.awesomevalidation.ValidationStyle
 import com.basgeekball.awesomevalidation.utility.RegexTemplate
 import kotlinx.android.synthetic.main.activity_mobile_bill.*
 import kotlinx.android.synthetic.main.activity_purchase.*
+import org.json.JSONObject
 
 class MobileBill : AppCompatActivity() {
 
@@ -17,7 +18,7 @@ class MobileBill : AppCompatActivity() {
         setContentView(R.layout.activity_mobile_bill)
         val mAwesomeValidation = AwesomeValidation(ValidationStyle.BASIC)
         mAwesomeValidation.addValidation(this, R.id.amountLayoutPB,"^\\s*(?=.*[1-9])\\d*(?:\\.\\d{1,2})?\\s*\$" ,R.string.err_amount)
-        mAwesomeValidation.addValidation(this, R.id.phoneNumberBP, "^[0-9]{9}\$",R.string.err_phone_number)
+        mAwesomeValidation.addValidation(this, R.id.phoneNumberLayoutBP, "^[0-9]{9}\$",R.string.err_phone_number)
         val btn_click_me = findViewById(R.id.proceedBP) as Button
         val backButton = findViewById(R.id.backButtonBP) as Button
 
@@ -26,17 +27,30 @@ class MobileBill : AppCompatActivity() {
 
             if(mAwesomeValidation.validate())
             {
+
+                var params = JSONObject()
+
                 println(paymentMethodSpinner.selectedItem.toString())
-                if(paymentMethodSpinner.selectedItem.toString() == "Credit Card")
+
+
+                when (telecomMethodSpinner.selectedItemPosition) {
+                    0 -> params.put("PayeeId","1000001")
+                    1 -> params.put("PayeeId","1000001")
+                    2 -> params.put("PayeeId","1000001")
+
+                }
+                params.put("amount",amountBP.text.toString())
+                params.put("phoneNumber",phoneNumberBP.text.toString())
+                if(paymentMethodSpinner.selectedItemPosition == 0)
                 {11
                     val intent = Intent(baseContext, CardPay::class.java)
-                    intent.putExtra("EXTRA_SESSION_ID", "here")
+                    intent.putExtra("data",params.toString())
                     startActivity(intent)
                 }
-                if(paymentMethodSpinner.selectedItem.toString() == "Mobile Wallet")
+                if(paymentMethodSpinner.selectedItemPosition == 1)
                 {
                     val intent = Intent(baseContext, WalletPay::class.java)
-                    intent.putExtra("EXTRA_SESSION_ID", "here")
+                    intent.putExtra("data", params.toString())
                     startActivity(intent)
                 }
             }

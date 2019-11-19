@@ -1,24 +1,38 @@
 package com.example.primepay.ui
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.Toast
 import com.example.primepay.*
-import kotlinx.android.synthetic.main.activity_dash.*
+import androidx.appcompat.widget.Toolbar
+import androidx.core.os.ConfigurationCompat
+import com.android.volley.DefaultRetryPolicy
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
+import com.zeugmasolutions.localehelper.LocaleHelperActivityDelegateImpl
+import org.json.JSONObject
+import java.util.*
 
-class dash : AppCompatActivity(),View.OnClickListener {
+
+class dash : AppCompatActivity(),View.OnClickListener{
+
+    private val localeDelegate = LocaleHelperActivityDelegateImpl()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dash)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        localeDelegate.onCreate(this)
         setSupportActionBar(toolbar)
-        val actnBar = supportActionBar
-        actnBar!!.setDisplayShowHomeEnabled(true)
-        actnBar.show()
 
 
 //        val p = findViewById<LinearLayout>(R.id.purchaseCardView)
@@ -108,30 +122,6 @@ class dash : AppCompatActivity(),View.OnClickListener {
 
     }
 
-//
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        val inflater = menuInflater
-//        inflater.inflate(R.menu.menu, menu)
-//        return true
-//    }
-//
-//    // actions on click menu items
-//    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-//
-//        R.id.action_profile -> {
-//            msgShow("Profile")
-//            true
-//        }
-//        R.id.action_setting -> {
-//            msgShow("Setting")
-//            true
-//        }
-//        else -> {
-//            // If we got here, the user's action was not recognized.
-//            // Invoke the superclass to handle it.
-//            super.onOptionsItemSelected(item)
-//        }
-//    }
 
     fun msgShow(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
@@ -142,7 +132,35 @@ class dash : AppCompatActivity(),View.OnClickListener {
         when (item.itemId) {
             R.id.action_cut -> {
                 Toast.makeText(applicationContext, "Cut", Toast.LENGTH_SHORT).show()
-                return true
+                val params = mutableMapOf<String, Any>()
+                params["email"] = "mhmd@me.me"
+                params["password"] = "1234"
+                val jsonObj = JSONObject(params as Map<*, *>)
+                val request = JsonObjectRequest(
+                    Request.Method.POST,"http://www.scientia-sd.com/api/login",jsonObj,
+                    Response.Listener { response ->
+                    // Process the json
+                    try {
+                        println(response)
+                    }catch (e:Exception){
+                        println(e)
+                    }
+
+                }, Response.ErrorListener{
+                    // Error in request
+                        println(it)
+                })
+                request.retryPolicy = DefaultRetryPolicy(
+                    DefaultRetryPolicy.DEFAULT_TIMEOUT_MS,
+                    0, // DefaultRetryPolicy.DEFAULT_MAX_RETRIES = 2
+                    1f // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+                )
+                 val requestQueue: RequestQueue by lazy {
+                    // applicationContext is key, it keeps you from leaking the
+                    // Activity or BroadcastReceiver if someone passes one in.
+                    Volley.newRequestQueue(applicationContext)
+                }
+                requestQueue.add(request)
             }
             R.id.action_copy -> {
                 Toast.makeText(applicationContext, "copy", Toast.LENGTH_SHORT).show()
@@ -150,7 +168,14 @@ class dash : AppCompatActivity(),View.OnClickListener {
             }
             R.id.action_paste -> {
                 Toast.makeText(applicationContext, "paste", Toast.LENGTH_SHORT).show()
-                return true
+                val currentLocale = ConfigurationCompat.getLocales(resources.configuration)[0]
+                val ara = Locale.Builder().setLanguage("ar").build()
+                if(currentLocale == ara){
+                    updateLocale(Locale.ENGLISH)
+                }else{
+                    updateLocale(ara)
+                }
+                Toast.makeText(applicationContext, "Current Lang is$currentLocale", Toast.LENGTH_SHORT).show()
             }
             R.id.action_new -> {
                 Toast.makeText(applicationContext, "new", Toast.LENGTH_SHORT).show()
@@ -160,5 +185,37 @@ class dash : AppCompatActivity(),View.OnClickListener {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+
+    }
+
+
+    //Localization Code
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(localeDelegate.attachBaseContext(newBase))
+    }
+
+    override fun onResume() {
+        super.onResume()
+        localeDelegate.onResumed(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        localeDelegate.onPaused()
+    }
+
+    open fun updateLocale(locale: Locale) {
+        localeDelegate.setLocale(this, locale)
+        Locale.setDefault(locale)
+        val langPref = getSharedPreferences("language", Context.MODE_PRIVATE)
+        val editor = langPref.edit()
+        editor.putString("langToLoad", locale.toLanguageTag())
+        editor.apply()
+    }
+
+    // End Of Localization Code
 
 }
