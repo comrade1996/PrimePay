@@ -36,7 +36,7 @@ class Purchase : AppCompatActivity() {
             if(mAwesomeValidation.validate())
             {
                 var params = JSONObject()
-                params.put("amount",amountP.text.toString())
+                params.put("tranAmount",amountP.text.toString())
                 println(paymentMethodSpin.selectedItemId)
                 if(paymentMethodSpin.getSelectedItemPosition() == 0)
                 {

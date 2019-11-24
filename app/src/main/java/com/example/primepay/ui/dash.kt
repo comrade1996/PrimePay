@@ -21,6 +21,12 @@ import com.android.volley.toolbox.Volley
 import com.zeugmasolutions.localehelper.LocaleHelperActivityDelegateImpl
 import org.json.JSONObject
 import java.util.*
+import com.android.volley.VolleyError
+import com.android.volley.RetryPolicy
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import com.example.primepay.api.apiHandler
 
 
 class dash : AppCompatActivity(),View.OnClickListener{
@@ -33,7 +39,6 @@ class dash : AppCompatActivity(),View.OnClickListener{
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         localeDelegate.onCreate(this)
         setSupportActionBar(toolbar)
-
 
 //        val p = findViewById<LinearLayout>(R.id.purchaseCardView)
 //        p.setOnClickListener{
@@ -105,7 +110,7 @@ class dash : AppCompatActivity(),View.OnClickListener{
         }
 
         if(pageName=="MOHE"){
-            val intent = Intent(this, MOHE::class.java)
+            val intent = Intent(this, MOHEList::class.java)
             startActivity(intent)
         }
 
@@ -130,43 +135,19 @@ class dash : AppCompatActivity(),View.OnClickListener{
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle presses on the action bar menu items
         when (item.itemId) {
-            R.id.action_cut -> {
+            R.id.action_ntest -> {
                 Toast.makeText(applicationContext, "Cut", Toast.LENGTH_SHORT).show()
-                val params = mutableMapOf<String, Any>()
-                params["email"] = "mhmd@me.me"
-                params["password"] = "1234"
-                val jsonObj = JSONObject(params as Map<*, *>)
-                val request = JsonObjectRequest(
-                    Request.Method.POST,"http://www.scientia-sd.com/api/login",jsonObj,
-                    Response.Listener { response ->
-                    // Process the json
-                    try {
-                        println(response)
-                    }catch (e:Exception){
-                        println(e)
-                    }
-
-                }, Response.ErrorListener{
-                    // Error in request
-                        println(it)
-                })
-                request.retryPolicy = DefaultRetryPolicy(
-                    DefaultRetryPolicy.DEFAULT_TIMEOUT_MS,
-                    0, // DefaultRetryPolicy.DEFAULT_MAX_RETRIES = 2
-                    1f // DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
-                )
-                 val requestQueue: RequestQueue by lazy {
-                    // applicationContext is key, it keeps you from leaking the
-                    // Activity or BroadcastReceiver if someone passes one in.
-                    Volley.newRequestQueue(applicationContext)
-                }
-                requestQueue.add(request)
+                val params = JSONObject()
+                params.put("clientId","ZECPOS2018")
+                params.put("terminalId","19000019")
+                params.put("tranDateTime","111119011852")
+                //apiHandler.instance.sendcall(this,"http://10.0.2.2:8000/api/isAlive",params)
             }
-            R.id.action_copy -> {
+            R.id.action_reports -> {
                 Toast.makeText(applicationContext, "copy", Toast.LENGTH_SHORT).show()
                 return true
             }
-            R.id.action_paste -> {
+            R.id.action_chLang -> {
                 Toast.makeText(applicationContext, "paste", Toast.LENGTH_SHORT).show()
                 val currentLocale = ConfigurationCompat.getLocales(resources.configuration)[0]
                 val ara = Locale.Builder().setLanguage("ar").build()
@@ -177,7 +158,7 @@ class dash : AppCompatActivity(),View.OnClickListener{
                 }
                 Toast.makeText(applicationContext, "Current Lang is$currentLocale", Toast.LENGTH_SHORT).show()
             }
-            R.id.action_new -> {
+            R.id.action_logout -> {
                 Toast.makeText(applicationContext, "new", Toast.LENGTH_SHORT).show()
                 return true
             }

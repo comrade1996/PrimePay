@@ -3,6 +3,9 @@
     <string name="card_transfer">Card Transfer</string>
     <string name="cash_in">Cash In</string>
     <string name="change_lang">Change Language To Arabic</string>
+    <string name="logout">Logout</string>
+    <string name="ntest">Network Test</string>
+    <string name="reports">Reports</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -25,6 +28,40 @@
         <item>Sudani</item>
         <item>Zain</item>
         <item>MTN</item>
+    </string-array>
+    <!--    strings related to E15 services-->
+    <string name="services_providers_prompt">E15 Services Providers</string>
+    <string-array name="services_providers">
+        <item>Bill Inquiry</item>
+        <item>Payment</item>
+    </string-array>
+    <!--    strings related to MOHE-->
+    <string name="moheType">MOHE Type</string>
+    <string-array name="mohe_types">
+        <item>Sudanese MOHE</item>
+        <item>Arab MOHE</item>
+    </string-array>
+
+    <string name="courseId">Course ID</string>
+    <string-array name="course_id">
+        <item>Academic</item>
+        <item>Agricultural</item>
+        <item>commercial</item>
+        <item>Industrial</item>
+        <item>Womanly</item>
+        <item>Ahlia</item>
+        <item>Readings</item>
+    </string-array>
+
+    <string name="formKind">Form Kind</string>
+    <string-array name="form_kind">
+        <item>General admission-first round</item>
+        <item>Special admission</item>
+        <item>Sons of higher education staff</item>
+        <item>General admission-second round</item>
+        <item>Special admission-vacant seats</item>
+        <item>Private institutions direct admission</item>
+        <item>Diploma in public institutions</item>
     </string-array>
     <!-- Custom Keyboard String -->
     <string name="one">1</string>
@@ -98,5 +135,22 @@
     <string name="hint_phone_number">Enter your number without (0)</string>
     <string name="err_meter_number">Invaild Meter Number</string>
     <string name="err_pin">invaild pin</string>
+    <string name="ServiceID">Service ID</string>
+    <string name="services_prompt">services</string>
+    <string name="invoice">Invoice Number</string>
+    <string name="err_invoice_number">Invaild Invoice Number</string>
+    <string name="bankCode">Bank Code</string>
+    <string name="declarantCode">Declarant Code</string>
+    <string name="err_bank_code">Bank Code</string>
+    <string name="err_declarant_code">Declarant Code</string>
+    <string name="seatNumber">Student Seat Number</string>
+    <string name="err_seat_number">Invaild Seat Number</string>
+    <string name="moheArab">MOHE Arab</string>
+    <string name="fullName">Full Name</string>
+    <string name="err_full_name">Invaild Full Name</string>
+    <string name="mohelist">mohe List</string>
+    <string name="loading">Load</string>
+    <string name="err_username">Invaild username</string>
+
     <!--error msgs-->
 </resources>

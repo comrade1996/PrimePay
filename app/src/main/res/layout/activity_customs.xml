@@ -1,33 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
         tools:context=".Customs">
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="344dp"
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:hintAnimationEnabled="false" app:hintEnabled="false"
-            android:id="@+id/textInputLayout">
+            android:background="?attr/colorPrimary"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize"
+            android:id="@+id/toolbar11"
+            app:title="@string/custom"
+            app:titleTextColor="#F9F9F9"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background"
+            android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputEditText
+
+        <!--<androidx.cardview.widget.CardView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="20dp"-->
+        <!--card_view:cardElevation="8dp"-->
+        <!--app:cardCornerRadius="5dp"-->
+        <!--android:background="#ffffff">-->
+
+        <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="999999999999" android:textColorLink="@color/light_blue_700"
-                android:textColorHighlight="@color/light_blue_700"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-            android:text="@string/phone_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/textInputLayout" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="parent" tools:text="@string/phone_number"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                android:gravity="start"
+                android:orientation="horizontal">
+
+            <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="81dp"
+                    android:padding="10dp"
+                    tools:srcCompat="@drawable/internet"
+                    android:contentDescription="@string/page_logo"/>
+
+
+        </LinearLayout>
+        <!--</androidx.cardview.widget.CardView>-->
+
+        <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                app:cardCornerRadius="5dp"
+                card_view:cardElevation="9dp"
+                android:layout_marginRight="20dp"
+
+                android:background="@drawable/round_border">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+                <TextView
+                        android:text="@string/bankCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView15"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/bankCodeLayoutCU"
+                        app:hintAnimationEnabled="false"
+                        app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/bankCodeCU"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/bankCode"
+                            android:inputType="number"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                        android:text="@string/declarantCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView16"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textAlignment="center"/>
+                <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/declarantCodeLayoutCU"
+                        app:hintAnimationEnabled="false"
+                        app:hintEnabled="false">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/declarantCodetCU"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/declarantCode"
+                            android:inputType="number"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_middle"
+                        android:text="@string/payment_options"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/grey_90"
+                        android:textStyle="bold"/>
+
+                <Spinner
+                        android:id="@+id/paymentMethodSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="58dp"
+                        android:layout_gravity="center"
+                        android:entries="@array/payment_method"
+                        android:prompt="@string/payment_method_prompt"/>
+
+                <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/proceed"
+                        android:textAllCaps="false"
+                        android:layout_marginTop="30dp"
+                        android:textColor="#ffffff"
+                        android:padding="15dp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:background="@drawable/rounded_button"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:id="@+id/proceedCU"/>
+
+                <Button
+                        android:id="@+id/backButtonCU"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/back"
+                        android:padding="15dp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:background="@drawable/rounded_button2"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:textAllCaps="false"
+                        android:layout_marginBottom="20dp"
+                        />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+</LinearLayout>

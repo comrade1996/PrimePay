@@ -6,8 +6,10 @@ import android.widget.Button
 import com.basgeekball.awesomevalidation.AwesomeValidation
 import com.basgeekball.awesomevalidation.ValidationStyle
 import kotlinx.android.synthetic.main.activity_custom_keyboard.*
-import org.jpos.security.EncryptedPIN
 import org.json.JSONObject
+import se.simbio.encryption.Encryption
+import java.io.PrintStream
+import java.nio.charset.Charset
 import javax.crypto.Cipher
 import javax.crypto.spec.SecretKeySpec
 
@@ -24,12 +26,27 @@ class CustomKeyboard : AppCompatActivity() {
         amountCK.text = params.getString("amount")
         btn_click_me.setOnClickListener {
             if (mAwesomeValidation.validate()) {
-                //var en = EncryptedPIN()
-                // params.put("pin",encrypt(pinView.text.toString(),"hoooola"))
+                val key = "0e329232ea6d0d73"
+                //val encro = PinBlockEncryptionUtil.encryptPinBlock("1234567890123456","1423", key, 56)
+                val tstEnc = PinblockTool.format0Encode(pinView.text.toString(), params.getString("phonenumber"))
+                // params.put("pin",encrypt(p1inView.text.toString(),"hoooola"))
                 //Toast.makeText(this, "worked!", Toast.LENGTH_LONG).show()
                 // println(customizedEncrypt().encrypt(pinView.text.toString()))
 //                this.finish()
-                println(encrypt(pinView.text.toString(),"0e329232ea6d0d73"))
+                //println(encrypt(pinView.text.toString(),"0e329232ea6d0d73"))
+                val secretKey = SecretKeySpec(key.toHexByteArray() , "DES")
+                val cipher = Cipher.getInstance("DES")
+                cipher.init(Cipher.ENCRYPT_MODE, secretKey)
+                val encryptedPinBlock = cipher.doFinal(tstEnc.toHexByteArray())
+                println(tstEnc)
+                println(PinblockTool.format0decode(tstEnc, params.getString("phonenumber")))
+                println(encryptedPinBlock.printHexBytes())
+                println(secretKey.encoded.printHexBytes())
+                println("")
+                val decCipher = Cipher.getInstance("DES")
+                decCipher.init(Cipher.DECRYPT_MODE, secretKey)
+                val decBytes = decCipher.doFinal(encryptedPinBlock)
+                println(decBytes.printHexBytes())
             }
 
         }

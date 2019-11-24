@@ -1,10 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
         tools:context=".MOHE">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize" android:id="@+id/toolbar5" app:title="@string/mohe"
+            app:titleTextColor="#F9F9F9"/>
+    <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:scrollingCache="true">
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/background"
+                android:orientation="vertical">
+
+
+            <!--<androidx.cardview.widget.CardView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="20dp"-->
+            <!--card_view:cardElevation="8dp"-->
+            <!--app:cardCornerRadius="5dp"-->
+            <!--android:background="#ffffff">-->
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:orientation="horizontal">
+
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="81dp"
+                        android:contentDescription="@string/page_logo"
+                        android:padding="15dp"
+                        android:src="@drawable/elearning"
+                        tools:srcCompat="@drawable/elearning" />
+
+
+            </LinearLayout>
+            <!--</androidx.cardview.widget.CardView>-->
+
+            <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/round_border"
+                    app:cardCornerRadius="5dp"
+
+                    card_view:cardElevation="9dp">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="15dp">
+
+
+
+                    <TextView
+                            android:id="@+id/textView18"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/seatNumber"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/seatNumberLayoutMOHE"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:hintAnimationEnabled="false"
+                            app:hintEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/seatNumberMOHE"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/seatNumber"
+                                android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/spacing_middle"
+                            android:text="@string/courseId"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/grey_90"
+                            android:textStyle="bold" />
+
+                    <Spinner
+                            android:id="@+id/courseIdMethodSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="57dp"
+                            android:layout_gravity="center"
+                            android:entries="@array/course_id"
+                            android:prompt="@string/courseId" />
+
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/spacing_middle"
+                            android:text="@string/formKind"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/grey_90"
+                            android:textStyle="bold" />
+
+                    <Spinner
+                            android:id="@+id/formKindMethodSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="57dp"
+                            android:layout_gravity="center"
+                            android:entries="@array/form_kind"
+                            android:prompt="@string/formKind" />
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/spacing_middle"
+                            android:text="@string/payment_options"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/grey_90"
+                            android:textStyle="bold" />
+
+                    <Spinner
+                            android:id="@+id/paymentMethodSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="57dp"
+                            android:layout_gravity="center"
+                            android:entries="@array/payment_method"
+                            android:prompt="@string/payment_method_prompt" />
+
+                    <Button
+                            android:id="@+id/proceedMOHE"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginRight="20dp"
+                            android:background="@drawable/rounded_button"
+                            android:gravity="center"
+                            android:padding="15dp"
+                            android:text="@string/proceed"
+                            android:textAllCaps="false"
+                            android:textColor="#ffffff" />
+
+                    <Button
+                            android:id="@+id/backButtonMOHE"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/rounded_button2"
+                            android:gravity="center"
+                            android:padding="15dp"
+                            android:text="@string/back"
+                            android:textAllCaps="false" />
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

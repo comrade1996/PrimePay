@@ -7,6 +7,10 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     defaultConfig {
         applicationId "com.example.primepay"
         minSdkVersion 21
@@ -20,6 +24,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+}
+
+
+repositories {
+    flatDir {
+        dirs 'libs'
     }
 }
 
@@ -83,7 +94,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
     ///////////////////////////
-    implementation 'org.jpos:jpos:2.0.10'
+//    implementation 'org.jpos:jpos:2.0.10'
     implementation 'com.github.simbiose:Encryption:2.0.1'
     implementation 'com.basgeekball:awesome-validation:4.2'
     implementation 'com.chaos.view:pinview:1.4.3'
@@ -91,10 +102,25 @@ dependencies {
     implementation 'com.github.mukeshsolanki:android-otpview-pinview:1.0.4'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.zeugmasolutions.localehelper:locale-helper-android:1.0.2'
+    implementation 'commons-codec:commons-codec:1.13'
+    implementation 'org.apache.commons:commons-lang3:3.9'
+
+
+    //Sunmi SDK
+    implementation(name: 'PayLib-release-1.4.9', ext: 'aar')
+
 
 //    implementation 'io.konform:konform:0.1.0'
 //    implementation fileTree(dir: 'libs', include: ['*.jar'])
 //    implementation 'com.android.support:appcompat-v7:23.0.1'
 //    implementation 'com.android.support:design:23.0.1'
     //
+
+// Core ASYNC dependency
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.1.1'
+// Android UI Programming
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.1.1'
+// RxJava2 & Reactive Programming
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-rx2:1.1.1'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-reactive:1.1.1'
 }
