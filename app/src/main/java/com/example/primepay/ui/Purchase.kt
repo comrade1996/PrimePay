@@ -36,12 +36,12 @@ class Purchase : AppCompatActivity() {
             if(mAwesomeValidation.validate())
             {
                 var params = JSONObject()
-                params.put("tranAmount",amountP.text.toString())
+//                params.put("tranAmount",amountP.text.toString().toDouble())
                 println(paymentMethodSpin.selectedItemId)
                 if(paymentMethodSpin.getSelectedItemPosition() == 0)
                 {
                     val intent = Intent(baseContext, CardPay::class.java)
-                    intent.putExtra("data", params.toString())
+                    intent.putExtra("amount", amountP.text.toString().toDouble())
                     startActivity(intent)
                 }
                 if(paymentMethodSpin.getSelectedItemPosition() == 1)

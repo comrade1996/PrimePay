@@ -1,5 +1,6 @@
 package com.example.primepay
 
+import android.content.Context
 import android.os.*
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
@@ -12,6 +13,9 @@ import com.sunmi.pay.hardware.aidlv2.pinpad.PinPadListenerV2
 import com.sunmi.pay.hardware.aidlv2.pinpad.PinPadOptV2
 import com.sunmi.pay.hardware.aidlv2.readcard.CheckCardCallbackV2
 import com.sunmi.pay.hardware.aidlv2.readcard.ReadCardOptV2
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 
 class CardPay : AppCompatActivity() {
@@ -38,7 +42,7 @@ class CardPay : AppCompatActivity() {
             super.handleMessage(msg)
             when (msg.what) {
                 PIN_INIT -> {
-                    dismissLoadingDialog()
+                    //dismissLoadingDialog()
                     initPinPad()
                 }
                 PIN_CLICK_NUMBER -> {
@@ -57,32 +61,48 @@ class CardPay : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card_pay)
 
-//        initView()
-//        checkCard()
-        val params = JSONObject(getIntent().getStringExtra("data"))
-      val params2 = JSONObject()
-//        params.put("clientId","ZECPOS2018")
-//        params.put("terminalId","19000019")
-////            params.put("tranDateTime","111119011852")
-//        params.put("PAN","1234567891234567")
-//        params.put("PIN","1234432112344321")
-//        params.put("expDate","01/20")
-//        params.put("tranCurrencyCode","SDG")
-//        apiHandler.instance.sendcall(this,"http://10.0.2.2:8000/api/purchase",params)
+       initView()
+       checkCard()
+      val params = JSONObject()
+            var amount = getIntent().getDoubleExtra("amount",0.0)
+        val editor2 = getSharedPreferences("userData", Context.MODE_PRIVATE)
 
         val backButton = findViewById<Button>(R.id.backBbuttonCP)
         backButton.setOnClickListener {
 
-            params2.put("clientId","ZECPOS2018")
-            params2.put("terminalId","19000019")
+            params.put("clientId",editor2.getString("clientId","no"))
+            params.put("terminalId","19000019")
 //            params.put("tranDateTime","111119011852")
-            params2.put("PAN","6392560096043225")
-            params2.put("PIN","password")
-            params2.put("expDate","0112")
-            params2.put("tranCurrencyCode","SDG")
-            params2.put("tranAmount",250.0)
-            params2.put("additionalAmount",0.0)
-            //apiHandler.instance.sendcall(this,"http://10.0.2.2:8000/api/purchase",params2)
+            params.put("PAN","6392560096043225")
+            params.put("PIN","password")
+            params.put("expDate","0112")
+            params.put("tranCurrencyCode","SDG")
+            params.put("tranAmount",amount)
+            params.put("additionalAmount",10)
+
+            var token = editor2.getString("token","no")
+
+
+            GlobalScope.launch {
+                var response: JSONObject?
+                val res = async {
+            apiHandler.instance.sendcall(this@CardPay,"http://10.0.2.2:8000/api/purchase",params)
+
+                }
+//                if(res.await().let { response = it as JSONObject?; it != null  }){
+                    println("On Async Block" + res)
+                    try {
+//                        Looper.prepare()
+                        println("On Async Block" + res)
+
+                    }catch (e: Exception){
+                        //Looper.prepare()
+//                           Toast.makeText(applicationContext, "Exception Catched$e", Toast.LENGTH_LONG).show()
+                    }
+
+//                }
+
+            }
 
 
             Toast.makeText(this, params.toString(), Toast.LENGTH_LONG).show()
@@ -127,8 +147,10 @@ class CardPay : AppCompatActivity() {
 
     private fun checkCard() {
         try {
-            showLoadingDialog("Please Swipe")
-            val cardType = AidlConstants.CardType.MAGNETIC.getValue()
+            //showLoadingDialog("Please Swipe")
+            Toast.makeText(this, "Start Swiping", Toast.LENGTH_LONG).show()
+            val cardType = AidlConstants.CardType.MAGNETIC.value
+            Toast.makeText(this, "Card Type : $cardType", Toast.LENGTH_LONG).show()
             mReadCardOptV2!!.checkCard(cardType, mCheckCardCallback, 60)
         } catch (e: Exception) {
             e.printStackTrace()
